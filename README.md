@@ -106,6 +106,17 @@ Dari sisi client, fitur website pemesanan makanan yang ditawarkan beserta dengan
 12. Berikut adalah tampilan ketika pengguna logout dari website.**![](https://lh5.googleusercontent.com/DZUfP-sFwCVeNX1gvunol4rNqrMMW7___CK-LILZ7cpc7baZjbR481A78GVOc8h1pjVNMN-8Ioq3SIHSCUqRauyC7I5Ho1XXrUUQuST6wv-JzZ63X1Icolsefi2KHCWemuSkJlut)**
 ### Admin
 Dari sisi client, fitur website pemesanan makanan yang ditawarkan beserta dengan gambaran screenshot web-nya adalah sebagai berikut :
+1.  Pengguna dapat melihat data menu.**![](https://lh6.googleusercontent.com/8oXKG1d0UFrOfM9KGj_a-iCZWKNbOYsFSynni0rgOPemdWEYb4GtDTAME1NYGeEWnqWJiuVMbP2ohsoblIVdQe_AP7Yj5cfoPD2O1L0C2EJ9nWEDisDuGTTx4vjzdcmJ_kYmp6kI)**
+2. Pengguna dapat melakukan insert data menu.**![](https://lh4.googleusercontent.com/WhrgrcL2CKEQFjjTkUIB6WaqL_MspzYMwaOemQxRvbj925C2EtxFMnId2Hpu16e789zKyW_6VSv62u-ICU-LdYhty7ROTMyKSB7GEyeDbAVh7nvtDJr2LzM3lXSnje-7DGDAaBpF)**
+3. Pengguna dapat mengubah data menu yang ada.**![](https://lh6.googleusercontent.com/aOLOV90C7Kq6wOYreHYYRtyyvJ5-NKt5uGuBD1KNIVYeUyhr_YvNIeUwQK_XoCX97uKoQ8lIcFNMrtw8U3V1gprpC5MxNI33lTDvUw7OHCDWwkHKZuHCso225F27AhQl9teBFo6z)**
+4. Pengguna dapat melihat penjualan.**![](https://lh3.googleusercontent.com/c_WGeXHHK-DyIKoo8QUYYrfZt2gEDGeLrHy1GJMo0tYfJxl6i4vF2TCu2qELfo5I-tsZyFauoUv2puDGAvqjtv8v_tNPF86YMKltlCzGqNR3ts-7RltwxO7eCZH-fpu35BnBFYQF)**
+5. Pengguna bisa mengubah data penjualan sesuai keadaan.**![](https://lh4.googleusercontent.com/s8yntDwUJfbJhUlq7UceardR53O7_cFIxj66w5KZrIEUhUjJTlbAShRPM38XhCq2CkbqqJWUT-Rf3sYUw_M2r4FOTNK-cXoGkslny0jS2I-OMGtmixvPF-2NAQaeAfhn_d9JtWk3)**
+6. Pengguna bisa melihat detail order dari masing masing order.**![](https://lh3.googleusercontent.com/c0UpR5PLkm9CCUIlIXRWy4Lpi4IkcZEXCncVXb9vXLMWXY-IwHTFWivt6RpwG5Dogrz8OM-2_3G-VTGpgRuMxZagXgQ9ymiHmbfCf5v__1BunLVpYwzA0y_fV6ja7rBhnoNnChv8)**
+7. Pengguna yang merupakan superadmin dapat melihat data user.**![](https://lh5.googleusercontent.com/XXGuqSaH4Jn_OHxJeFMcNOWM8PUmT439D6w2T5RJnXQDzoRPd_ogTA3fPdCAFqiXEVCWXJckZt3wJDcAZW_XRLJPaJnyZRV4mLC8CeP9nqXlTaGgEEp1W-QKgUnx_7ax0Ee_jv_H)**
+8. Super admin juga dapat menambahkan admin baru.**![](https://lh3.googleusercontent.com/GljMwZAP116waGm_K0k8mA5pF02OLcEF6vfZti1xLrpbIilhLNMEoFiRR9LP6IRYO_bEAQOkjse1y2WBh525XauA14BVvWVqE64owhClDr9MoroJaiPtZdgG34TAMxQjBOBRw-l_)**
+9. juga bisa mengubah datanya.**![](https://lh4.googleusercontent.com/y-UMqcuzrNx7CHNZnZtpLwt36xLhJTph0Vw2z29HBTnX218GUkrYFChdbN1ELYn4zbE8mlZFpkgsUpFALS7JUGkj2soOhNXd9x8lpWT83HheN-CsH3ndnSVAbO-mF1hPBiCPpA7O)**
+10. Penguna bisa melakukan logout seperti berikut.**![](https://lh4.googleusercontent.com/ZVcb_s8LCNYhEndy4RTGplQsQKYJ4wed67Cdpn0sJCKrx8EZvyYwfo3O8eW4bxmG69Eqp_6prJHJ7rNhAWBMh8oeqFsDIMweIoHUrGmizjZWcP5Ol6vP0_p4Pbkw0o0Sl8dczW3o)**
+
 
 
 ## Kode-Kode Inti Beserta Penjelasannya
@@ -114,967 +125,964 @@ Dari sisi client, fitur website pemesanan makanan yang ditawarkan beserta dengan
 Controller Auth digunakan untuk melakukan authentication.
 
 Berikut kode inti-nya:
-public function __construct()
-{
-parent::__construct();
-// digunakan me-load library form_validation
-$this->load->library('form_validation');
-$this->load->helper('cookie');
-}
+    public function __construct()
+    {
+        parent::__construct();
+        // digunakan me-load library form_validation
+        $this->load->library('form_validation');
+        $this->load->helper('cookie');
+    }
 
 **digunakan untuk menampilkan halaman index.**
-public function index()
+    public function index()
 
-{
+    {
 
-// membuat agar user tidak kembali ke halaman login setelah melakukan login tanpa logout
+        // membuat agar user tidak kembali ke halaman login setelah melakukan login tanpa logout
 
-if ($this->session->userdata('email')) {
+        if ($this->session->userdata('email')) {
 
-redirect('users');
+            redirect('users');
 
-}
-
-  
-
-$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-
-$this->form_validation->set_rules('password', 'Password', 'trim|required');
+        }
 
   
 
-// jika gagal login, maka berikan pesan gagal
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
-if ($this->form_validation->run() == false) {
+    $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-$data['title'] = 'Login Page';
+  
 
-$this->load->view('templates/auth_header', $data);
+    // jika gagal login, maka berikan pesan gagal
 
-$this->load->view('auth/login');
+    if ($this->form_validation->run() == false) {
 
-$this->load->view('templates/auth_footer');
+        $data['title'] = 'Login Page';
 
-}
+        $this->load->view('templates/auth_header', $data);
 
-// menjalankan halaman login
+        $this->load->view('auth/login');
 
-else {
+        $this->load->view('templates/auth_footer');
 
-// method _login() bersifat private.
+    }
 
-$this->_login(); // di arahkan ke method login agar baris kode tidak panjang2.
+    // menjalankan halaman login
 
-}
+    else {
+
+        // method _login() bersifat private.
+
+        $this->_login(); // di arahkan ke method login agar baris kode tidak panjang2.
+
+    }
 
 }
 
 **digunakan untuk membuat pengguna dapat login dan masuk ke halaman index.**
-private function _login()
+    private function _login()
 
-{
+    {
 
-// simpan data yang dikirim dari form ke dalam variabel email dan password
+        // simpan data yang dikirim dari form ke dalam variabel email dan password
 
-$email = $this->input->post('email');
+        $email = $this->input->post('email');
 
-$password = $this->input->post('password');
+        $password = $this->input->post('password');
 
-  
+        
 
-// memeriksa apakah data user terdapat di dalam database atau tidak
+        // memeriksa apakah data user terdapat di dalam database atau tidak
 
-// SELECT * FROM users where email = $email
+        // SELECT * FROM users where email = $email
 
-$users = $this->db->get_where('users', ['email' => $email])->row_array();
+        $users = $this->db->get_where('users', ['email' => $email])->row_array();
 
-  
+        
 
-// jika data user ada di database, loginkan user ke halaman home/index
+        // jika data user ada di database, loginkan user ke halaman home/index
 
-if ($users) {
+        if ($users) {
 
-// jika usernya aktif
+        // jika usernya aktif
 
-if ($users['is_active'] == 1) {
+        if ($users['is_active'] == 1) {
 
-// cek password dulu, kalau benar maka kode di bawah akan dijalankan
+        // cek password dulu, kalau benar maka kode di bawah akan dijalankan
 
-if (password_verify($password, $users['password'])) {
+        if (password_verify($password, $users['password'])) {
 
-$cookie = array(
+        $cookie = array(
 
-  
+        
 
-'name' => 'user_id',
+        'name' => 'user_id',
 
-'value' => $users['id'],
+        'value' => $users['id'],
 
-'expire' => '604800',
+        'expire' => '604800',
 
-'secure' => TRUE
+        'secure' => TRUE
 
-  
+        
 
-);
+        );
 
-  
+        
 
-$this->input->set_cookie($cookie);
+        $this->input->set_cookie($cookie);
 
-// kalau passwordnya benar, kita cek email dan role nya (apakah admin atau member)
+        // kalau passwordnya benar, kita cek email dan role nya (apakah admin atau member)
 
-$data = [
+        $data = [
 
-'email' => $users['email'],
+        'email' => $users['email'],
 
-'role_id' => $users['role_id']
+        'role_id' => $users['role_id']
 
-];
+        ];
 
-// set user data-nya
+        // set user data-nya
 
-$this->session->set_userdata($data);
+        $this->session->set_userdata($data);
 
-// kalau member, arahkan ke controller member
+        // kalau member, arahkan ke controller member
 
-redirect('users');
+        redirect('users');
 
-}
+        }
 
-// jika password salah
+        // jika password salah
 
-else {
+        else {
 
-// berikan pesan gagal login karena password salah
+        // berikan pesan gagal login karena password salah
 
-$this->session->set_flashdata(
+        $this->session->set_flashdata(
 
-'message',
+        'message',
 
-'<div class="alert alert-danger" role="alert">
+        '<div class="alert alert-danger" role="alert">
 
-Password Anda salah!
+        Password Anda salah!
 
-</div>'
+        </div>'
 
-);
+        );
 
-redirect('auth');
+        redirect('auth');
 
-}
+        }
 
-}
+        }
 
-// jika user tidak aktif
+        // jika user tidak aktif
 
-else {
+        else {
 
-// berikan pesan gagal login karena data tidak ada di database.
+        // berikan pesan gagal login karena data tidak ada di database.
 
-$this->session->set_flashdata(
+        $this->session->set_flashdata(
 
-'message',
+        'message',
 
-'<div class="alert alert-danger" role="alert">
+        '<div class="alert alert-danger" role="alert">
 
-Email Anda belum aktif!
+        Email Anda belum aktif!
 
-</div>'
+        </div>'
 
-);
+        );
 
-redirect('auth');
+        redirect('auth');
 
-}
+        }
 
-}
+        }
 
-// jika tidak ada di database, user tidak boleh login.
+        // jika tidak ada di database, user tidak boleh login.
 
-else {
+        else {
 
-// berikan pesan gagal login karena data tidak ada di database.
+        // berikan pesan gagal login karena data tidak ada di database.
 
-$this->session->set_flashdata(
+        $this->session->set_flashdata(
 
-'message',
+        'message',
 
-'<div class="alert alert-danger" role="alert">
+        '<div class="alert alert-danger" role="alert">
 
-Email Anda belum terdaftar!
+        Email Anda belum terdaftar!
 
-</div>'
+        </div>'
 
-);
+        );
 
-redirect('auth');
+        redirect('auth');
 
-}
+        }
 
-}
+    }
 
 **digunakan untuk melakukan register.**
-public function register()
+    public function register()
 
-{
+    {
 
-// membuat rules untuk form validation agar register bisa dilakukan
+    // membuat rules untuk form validation agar register bisa dilakukan
 
-// kotak inputan register tidak boleh kosong
+    // kotak inputan register tidak boleh kosong
 
-$this->form_validation->set_rules('namadepan', 'Nama Depan', 'required|trim');
+    $this->form_validation->set_rules('namadepan', 'Nama Depan', 'required|trim');
 
-$this->form_validation->set_rules('namabelakang', 'Nama Belakang', 'required|trim');
+    $this->form_validation->set_rules('namabelakang', 'Nama Belakang', 'required|trim');
 
-$this->form_validation->set_rules(
+    $this->form_validation->set_rules(
 
-'email',
+    'email',
 
-'Email',
+    'Email',
 
-'required|trim|valid_email|is_unique[users.email]',
+    'required|trim|valid_email|is_unique[users.email]',
 
-['email' => 'Email sudah terdaftar.']
+    ['email' => 'Email sudah terdaftar.']
 
-);
+    );
 
-$this->form_validation->set_rules(
+    $this->form_validation->set_rules(
 
-'password1',
+    'password1',
 
-'Password',
+    'Password',
 
-'required|trim|min_length[3]|matches[password2]',
+    'required|trim|min_length[3]|matches[password2]',
 
-[
+    [
 
-'matches' => 'Kata Sandi tidak sama.',
+    'matches' => 'Kata Sandi tidak sama.',
 
-'min_length' => 'Kata Sandi terlalu pendek'
+    'min_length' => 'Kata Sandi terlalu pendek'
 
-]
+    ]
 
-);
+    );
 
-$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+    $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
-  
+    
 
-if ($this->form_validation->run() == false) { // jika register gagal, tampilkan kembali halaman register
+    if ($this->form_validation->run() == false) { // jika register gagal, tampilkan kembali halaman register
 
-$data['title'] = 'User Registration';
+    $data['title'] = 'User Registration';
 
-$this->load->view('templates/auth_header', $data);
+    $this->load->view('templates/auth_header', $data);
 
-$this->load->view('auth/register');
+    $this->load->view('auth/register');
 
-$this->load->view('templates/auth_footer');
+    $this->load->view('templates/auth_footer');
 
-} else {
+    } else {
 
-// ambil data dari form, masukkan ke database
+    // ambil data dari form, masukkan ke database
 
-$data = [
+    $data = [
 
-'namadepan' => htmlspecialchars($this->input->post('namadepan', true)),
+    'namadepan' => htmlspecialchars($this->input->post('namadepan', true)),
 
-'namabelakang' => htmlspecialchars($this->input->post('namabelakang', true)),
+    'namabelakang' => htmlspecialchars($this->input->post('namabelakang', true)),
 
-'email' => htmlspecialchars($this->input->post('email', true)),
+    'email' => htmlspecialchars($this->input->post('email', true)),
 
-'image' => 'default.jpg',
+    'image' => 'default.jpg',
 
-'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+    'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 
-'nohp' => htmlspecialchars($this->input->post('nohp', true)),
+    'nohp' => htmlspecialchars($this->input->post('nohp', true)),
 
-'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+    'alamat' => htmlspecialchars($this->input->post('alamat', true)),
 
-'role_id' => '2',
+    'role_id' => '2',
 
-'is_active' => '1',
+    'is_active' => '1',
 
-'created_at' => time()
+    'created_at' => time()
 
-];
+    ];
 
-  
+    
 
-// insert ke database table
+    // insert ke database table
 
-$this->db->insert('users', $data);
+    $this->db->insert('users', $data);
 
-// membuat pesan berhasil melakukan register
+    // membuat pesan berhasil melakukan register
 
-$this->session->set_flashdata(
+    $this->session->set_flashdata(
 
-'message',
+    'message',
 
-'<div class="alert alert-success" role="alert">
+    '<div class="alert alert-success" role="alert">
 
-Akun Anda berhasil dibuat. Silakan melakukan login.
+    Akun Anda berhasil dibuat. Silakan melakukan login.
 
-</div>'
+    </div>'
 
-);
+    );
 
-// redirect ke auth login page setelah melakukan register
+    // redirect ke auth login page setelah melakukan register
 
-redirect('auth');
+    redirect('auth');
 
-}
+    }
 
-}
+    }
 
 **digunakan untuk melakukan log-out.**
-public function logout()
+    public function logout()
 
-{
+    {
 
-// membersihkan session dan mengembalikan ke halaman login
+    // membersihkan session dan mengembalikan ke halaman login
 
-$this->session->unset_userdata('email');
+    $this->session->unset_userdata('email');
 
-$this->session->unset_userdata('role_id');
+    $this->session->unset_userdata('role_id');
 
-  
+    
 
-$this->session->set_flashdata(
+    $this->session->set_flashdata(
 
-'message',
+    'message',
 
-'<div class="alert alert-success" role="alert">
+    '<div class="alert alert-success" role="alert">
 
-Anda berhasil Logout.
+    Anda berhasil Logout.
 
-</div>'
+    </div>'
 
-);
+    );
 
-// redirect ke auth login page setelah melakukan logout
+    // redirect ke auth login page setelah melakukan logout
 
-redirect('auth');
+    redirect('auth');
 
-}
+    }
 
 
 #### 2.  class Cart
 **digunakan untuk me-load model yang dibutuhkan untuk menjalankan cart.**
-public function __construct()
-{
-parent::__construct();
-$this->load->model('M_Cart');
-$this->load->model('M_Menu');
-$this->load->model('M_Order');
-$this->load->model('M_Order_Detail');
-}
+    public function __construct()
+    {
+    parent::__construct();
+    $this->load->model('M_Cart');
+    $this->load->model('M_Menu');
+    $this->load->model('M_Order');
+    $this->load->model('M_Order_Detail');
+    }
 
 **digunakan untuk menjalankan index saat memilih fitur cart.**
-public function index()
+    public function index()
 
-{
+    {
 
-$user_id = $this->input->cookie('user_id', true);
+    $user_id = $this->input->cookie('user_id', true);
 
-  
+    
 
-$orders = $this->M_Order->getOrder($user_id, 'unpaid');
+    $orders = $this->M_Order->getOrder($user_id, 'unpaid');
 
-if ($orders) {
+    if ($orders) {
 
-$order_details = $this->M_Order->getOrderDetails($orders[0]->id);
+    $order_details = $this->M_Order->getOrderDetails($orders[0]->id);
 
-$dataOrders = array();
+    $dataOrders = array();
 
-for ($i=0; $i < count($order_details); $i++) {
+    for ($i=0; $i < count($order_details); $i++) {
 
-$dataMenuOrder = $this->M_Order->getOrderDetail($order_details[$i]->id);
+    $dataMenuOrder = $this->M_Order->getOrderDetail($order_details[$i]->id);
 
-$dataOrders[] = $dataMenuOrder[0];
+    $dataOrders[] = $dataMenuOrder[0];
 
-}
+    }
 
-$arrayMenu = array(
+    $arrayMenu = array(
 
-'order' => $orders,
+    'order' => $orders,
 
-'dataOrders' => $dataOrders
+    'dataOrders' => $dataOrders
 
-);
+    );
 
-  
+    
 
-$data['title'] = 'Cart';
+    $data['title'] = 'Cart';
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('cart/index', $arrayMenu);
+    $this->load->view('cart/index', $arrayMenu);
 
-} else {
+    } else {
 
-$orders = [];
+    $orders = [];
 
-$dataOrders = [];
+    $dataOrders = [];
 
-$arrayMenu = array(
+    $arrayMenu = array(
 
-'order' => $orders,
+    'order' => $orders,
 
-'dataOrders' => $dataOrders
+    'dataOrders' => $dataOrders
 
-);
+    );
 
-  
+    
 
-$data['title'] = 'Cart';
+    $data['title'] = 'Cart';
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('cart/index', $arrayMenu);
+    $this->load->view('cart/index', $arrayMenu);
 
-}
+    }
 
-  
+    
 
-}
+    }
 
 **digunakan agar pengguna dapat menambahkan item pesanan ke keranjang**
-public function add($id)
+    public function add($id)
 
-{
+    {
 
-$menu = $this->M_Menu->getMenu($id);
+    $menu = $this->M_Menu->getMenu($id);
 
-  
+    
 
-$arrayMenu = array(
+    $arrayMenu = array(
 
-'menu' => $menu
+    'menu' => $menu
 
-);
+    );
 
-  
+    $data['title'] = 'Create Order';
 
-$data['title'] = 'Create Order';
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('cart/add', $arrayMenu);
 
-$this->load->view('cart/add', $arrayMenu);
-
-}
+    }
 
 **digunakan agar pengguna dapat membuat orderannya dan menampilkan pesanan pengguna.**
-public function create($id)
+    public function create($id)
 
-{
+    {
 
-$user_id = $this->input->cookie('user_id', true);
+    $user_id = $this->input->cookie('user_id', true);
 
-  
+    
 
-// ambil menu berdasarkan id
+    // ambil menu berdasarkan id
 
-$menu = $this->M_Menu->getMenu($id);
+    $menu = $this->M_Menu->getMenu($id);
 
-  
+    
 
-// ambil data form input
+    // ambil data form input
 
-$qty = $this->input->post('qty');
+    $qty = $this->input->post('qty');
 
-$price = $menu[0]->price;
+    $price = $menu[0]->price;
 
-  
+    
 
-// ini ambil order berdasar user id dan status order unpaid
+    // ini ambil order berdasar user id dan status order unpaid
 
-$order = $this->M_Order->getOrder($user_id, 'unpaid');
+    $order = $this->M_Order->getOrder($user_id, 'unpaid');
 
-  
+    
 
-// check order where user id and status unpaid
+    // check order where user id and status unpaid
 
-if (count($order) == 0) {
+    if (count($order) == 0) {
 
-// bikin data order
+    // bikin data order
 
-$arrInsertOrder = array(
+    $arrInsertOrder = array(
 
-'user_id' => $user_id,
+    'user_id' => $user_id,
 
-'status' => 'unpaid',
+    'status' => 'unpaid',
 
-'sub_total' => $qty * $price,
+    'sub_total' => $qty * $price,
 
-'created_at' => date("Y/m/d"),
+    'created_at' => date("Y/m/d"),
 
-'updated_at' => date("Y/m/d"),
+    'updated_at' => date("Y/m/d"),
 
-);
+    );
 
-  
+    
 
-$this->db->insert('orders', $arrInsertOrder);
+    $this->db->insert('orders', $arrInsertOrder);
 
-// get order id
+    // get order id
 
-$newOrder = $this->M_Order->getOrder($user_id, 'unpaid');
+    $newOrder = $this->M_Order->getOrder($user_id, 'unpaid');
 
-  
+    
 
-// bikin data order detail
+    // bikin data order detail
 
-$arrInsertOrderDetails = array(
+    $arrInsertOrderDetails = array(
 
-'order_id' => $newOrder[0]->id,
+    'order_id' => $newOrder[0]->id,
 
-'menu_id' => $id,
+    'menu_id' => $id,
 
-'qty' => $qty,
+    'qty' => $qty,
 
-'price' => $qty * $price,
+    'price' => $qty * $price,
 
-'created_at' => date("Y/m/d"),
+    'created_at' => date("Y/m/d"),
 
-'updated_at' => date("Y/m/d"),
+    'updated_at' => date("Y/m/d"),
 
-);
+    );
 
-  
+    
 
-$this->db->insert('order_details', $arrInsertOrderDetails);
+    $this->db->insert('order_details', $arrInsertOrderDetails);
 
-} else {
+    } else {
 
-// get order detail where order id and menu id
+    // get order detail where order id and menu id
 
-$orderDetail = $this->M_Order_Detail->getOrderDetail($order[0]->id, $id);
+    $orderDetail = $this->M_Order_Detail->getOrderDetail($order[0]->id, $id);
 
-  
+    
 
-// cek apakah ada data order detail dengan order id dan menu id
+    // cek apakah ada data order detail dengan order id dan menu id
 
-if (count($orderDetail) == 0) {
+    if (count($orderDetail) == 0) {
 
-// bikin data order detail
+    // bikin data order detail
 
-$arrInsertOrderDetails = array(
+    $arrInsertOrderDetails = array(
 
-'order_id' => $order[0]->id,
+    'order_id' => $order[0]->id,
 
-'menu_id' => $id,
+    'menu_id' => $id,
 
-'qty' => $qty,
+    'qty' => $qty,
 
-'price' => $qty * $price,
+    'price' => $qty * $price,
 
-'created_at' => date("Y/m/d"),
+    'created_at' => date("Y/m/d"),
 
-'updated_at' => date("Y/m/d"),
+    'updated_at' => date("Y/m/d"),
 
-);
+    );
 
-  
+    
 
-$this->db->insert('order_details', $arrInsertOrderDetails);
+    $this->db->insert('order_details', $arrInsertOrderDetails);
 
-  
+    
 
-// update data order ( sub total sama updated at )
+    // update data order ( sub total sama updated at )
 
-$arrUpdateOrder = array(
+    $arrUpdateOrder = array(
 
-'sub_total' => $order[0]->sub_total + ($qty * $price),
+    'sub_total' => $order[0]->sub_total + ($qty * $price),
 
-'updated_at' => date("Y/m/d")
+    'updated_at' => date("Y/m/d")
 
-);
+    );
 
-  
+    
 
-$this->db->update('orders', $arrUpdateOrder, array('id' => $order[0]->id));
+    $this->db->update('orders', $arrUpdateOrder, array('id' => $order[0]->id));
 
-} else {
+    } else {
 
-// update exists menu order detail
+    // update exists menu order detail
 
-$arrUpdateOrderDetails = array(
+    $arrUpdateOrderDetails = array(
 
-'qty' => $orderDetail[0]->qty + $qty,
+    'qty' => $orderDetail[0]->qty + $qty,
 
-'price' => $orderDetail[0]->price + ($qty * $price),
+    'price' => $orderDetail[0]->price + ($qty * $price),
 
-'updated_at' => date("Y/m/d"),
+    'updated_at' => date("Y/m/d"),
 
-);
+    );
 
-  
+    
 
-$this->db->update('order_details', $arrUpdateOrderDetails, array('menu_id' => $orderDetail[0]->menu_id));
+    $this->db->update('order_details', $arrUpdateOrderDetails, array('menu_id' => $orderDetail[0]->menu_id));
 
-  
+    
 
-// update data order ( sub total sama updated at )
+    // update data order ( sub total sama updated at )
 
-$arrUpdateOrder = array(
+    $arrUpdateOrder = array(
 
-'sub_total' => $order[0]->sub_total + ($qty * $price),
+    'sub_total' => $order[0]->sub_total + ($qty * $price),
 
-'updated_at' => date("Y/m/d")
+    'updated_at' => date("Y/m/d")
 
-);
+    );
 
-  
+    
 
-$this->db->update('orders', $arrUpdateOrder, array('id' => $order[0]->id));
+    $this->db->update('orders', $arrUpdateOrder, array('id' => $order[0]->id));
 
-}
+    }
 
-}
+    }
 
-  
+    
 
-redirect(base_url().'cart');
+    redirect(base_url().'cart');
 
-}
+    }
 
 **digunakan untuk menghapus item pesanan pengguna.**
-public function delete($id)
+    public function delete($id)
 
-{
+    {
 
-$order_details = $this->M_Order->getOrderDetail($id);
+    $order_details = $this->M_Order->getOrderDetail($id);
 
-$orders = $this->M_Order->getOrderWhereId($order_details[0]->order_id);
+    $orders = $this->M_Order->getOrderWhereId($order_details[0]->order_id);
 
-  
+    
 
-$arrUpdateOrder = array(
+    $arrUpdateOrder = array(
 
-'sub_total' => $orders[0]->sub_total - $order_details[0]->price,
+    'sub_total' => $orders[0]->sub_total - $order_details[0]->price,
 
-'updated_at' => date("Y/m/d")
+    'updated_at' => date("Y/m/d")
 
-);
+    );
 
-  
+    
 
-$this->db->update('orders', $arrUpdateOrder, array('id' => $order_details[0]->order_id));
+    $this->db->update('orders', $arrUpdateOrder, array('id' => $order_details[0]->order_id));
 
-$this->db->delete('order_details', array('id' => $id));
+    $this->db->delete('order_details', array('id' => $id));
 
-  
+    
 
-redirect(base_url().'cart');
+    redirect(base_url().'cart');
 
-}
+    }
 
 **digunakan untuk melakukan check-out pesanan pengguna.**
-public function checkout($id)
+    public function checkout($id)
 
-{
+    {
 
-$arrUpdateOrder = array(
+    $arrUpdateOrder = array(
 
-'status' => 'paid',
+    'status' => 'paid',
 
-'updated_at' => date("Y/m/d")
+    'updated_at' => date("Y/m/d")
 
-);
+    );
 
-  
+    
 
-$this->db->update('orders', $arrUpdateOrder, array('id' => $id));
+    $this->db->update('orders', $arrUpdateOrder, array('id' => $id));
 
-  
+    
 
-$this->session->set_flashdata('success', 'Pesanan anda diproses!');
+    $this->session->set_flashdata('success', 'Pesanan anda diproses!');
 
-  
+    
 
-redirect(base_url().'users');
+    redirect(base_url().'users');
 
-}
+    }
 
 #### 3. class Menu
 **Digunakan untuk me load model yang dibutuhkan untuk menjalankan menu**
-public function __construct()
+    public function __construct()
 
-{
+    {
 
-parent::__construct();
+    parent::__construct();
 
-$this->load->model('M_Menu');
+    $this->load->model('M_Menu');
 
-}
-
-public function index()
+    }
 
 **Digunakan untuk menampilkan halaman menu**
-{
+    public function index()
+    {
 
-// get foods data
+    // get foods data
 
-$foods = $this->M_Menu->getFoods();
+    $foods = $this->M_Menu->getFoods();
 
-  
+    
 
-// get drinks data
+    // get drinks data
 
-$drinks = $this->M_Menu->getDrinks();
+    $drinks = $this->M_Menu->getDrinks();
 
-  
+    
 
-// get snacks data
+    // get snacks data
 
-$snacks = $this->M_Menu->getSnacks();
+    $snacks = $this->M_Menu->getSnacks();
 
-$arrayMenus = array(
+    $arrayMenus = array(
 
-'foods' => $foods,
+    'foods' => $foods,
 
-'drinks' => $drinks,
+    'drinks' => $drinks,
 
-'snacks' => $snacks
+    'snacks' => $snacks
 
-);
+    );
 
-  
+    
 
-$data['title'] = 'Menus';
+    $data['title'] = 'Menus';
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('menu/index', $arrayMenus);
+    $this->load->view('menu/index', $arrayMenus);
 
-// $this->load->view('templates/footer');
+    // $this->load->view('templates/footer');
 
-}
+    }
 
 **Digunakan untuk mencari menu**
 
-public function search()
+    public function search()
 
-{
+    {
 
-$search = $this->input->post('search');
+    $search = $this->input->post('search');
 
-  
+    
 
-$menus = $this->M_Menu->getAllMenu($search);
+    $menus = $this->M_Menu->getAllMenu($search);
 
-  
+    
 
-$arrayMenus = array(
+    $arrayMenus = array(
 
-'menus' => $menus,
+    'menus' => $menus,
 
-'search' => $search
+    'search' => $search
 
-);
+    );
 
-  
+    
 
-$data['title'] = 'Menus | Search';
+    $data['title'] = 'Menus | Search';
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('menu/search', $arrayMenus);
+    $this->load->view('menu/search', $arrayMenus);
 
-}
+    }
 
-}
+    }
 
 #### 4.  class Home
 **digunakan untuk menjalankan halaman index home.**
 
-public function index()
+    public function index()
 
-{
+    {
 
-$data['title'] = 'Home Page';
+    $data['title'] = 'Home Page';
 
-$this->load->view('templates/header', $data);
+    $this->load->view('templates/header', $data);
 
-$this->load->view('foodHome/index');
+    $this->load->view('foodHome/index');
 
-$this->load->view('templates/footer');
+    $this->load->view('templates/footer');
 
-}
+    }
 
 #### 5. class Users
 **digunakan untuk menjalankan halaman index saat pengguna sukses login.**
 
-public function index() {
+    public function index() {
 
-$data['title'] = 'Home Page';
+    $data['title'] = 'Home Page';
 
-$data['users'] = $this->db->get_where('users',
+    $data['users'] = $this->db->get_where('users',
 
-[ 'email' => $this->session->userdata('email') ]
+    [ 'email' => $this->session->userdata('email') ]
 
-) -> row_array();
+    ) -> row_array();
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('foodpageUser/index');
+    $this->load->view('foodpageUser/index');
 
-$this->load->view('templates/footer');
+    $this->load->view('templates/footer');
 
-}
+    }
 
   
 
 **digunakan untuk menjalankan tampilan profile pengguna.**
 
-public function profile() {
+    public function profile() {
 
-$data['title'] = 'Profil Saya';
+    $data['title'] = 'Profil Saya';
 
-$data['users'] = $this->db->get_where('users',
+    $data['users'] = $this->db->get_where('users',
 
-[ 'email' => $this->session->userdata('email') ]
+    [ 'email' => $this->session->userdata('email') ]
 
-) -> row_array();
+    ) -> row_array();
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('users/profile');
+    $this->load->view('users/profile');
 
-$this->load->view('templates/footer');
+    $this->load->view('templates/footer');
 
-  
+    
 
-}
+    }
 
 **digunakan untuk menjalankan tampilan dan fungsi untuk mengedit data pengguna.**
 
-public function update() {
+    public function update() {
 
-$data['title'] = 'Update Profil';
+    $data['title'] = 'Update Profil';
 
-$data['users'] = $this->db->get_where('users',
+    $data['users'] = $this->db->get_where('users',
 
-[ 'email' => $this->session->userdata('email') ]
+    [ 'email' => $this->session->userdata('email') ]
 
-) -> row_array();
+    ) -> row_array();
 
-  
+    
 
-$this->form_validation->set_rules('namadepan', 'Nama Depan', 'required|trim');
+    $this->form_validation->set_rules('namadepan', 'Nama Depan', 'required|trim');
 
-$this->form_validation->set_rules('namabelakang', 'Nama Belakang', 'required|trim');
+    $this->form_validation->set_rules('namabelakang', 'Nama Belakang', 'required|trim');
 
-$this->form_validation->set_rules('nohp', 'No HP', 'required|trim');
+    $this->form_validation->set_rules('nohp', 'No HP', 'required|trim');
 
-$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
+    $this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 
-  
+    
 
-if ($this->form_validation->run() == FALSE) {
+    if ($this->form_validation->run() == FALSE) {
 
-$this->load->view('templates/header_user', $data);
+    $this->load->view('templates/header_user', $data);
 
-$this->load->view('users/update', $data);
+    $this->load->view('users/update', $data);
 
-$this->load->view('templates/footer');
+    $this->load->view('templates/footer');
 
-}
+    }
 
-else {
+    else {
 
-$namadepan = $this->input->post('namadepan');
+    $namadepan = $this->input->post('namadepan');
 
-$email = $this->input->post('email');
+    $email = $this->input->post('email');
 
-  
+    
 
-// cek jika user mengupload foto profil baru
+    // cek jika user mengupload foto profil baru
 
-$upload_photo = $_FILES['image'];
+    $upload_photo = $_FILES['image'];
 
-  
+    
 
-// cek jika yang dikirim user adalah benar-benar file foto
+    // cek jika yang dikirim user adalah benar-benar file foto
 
-if ($upload_photo) {
+    if ($upload_photo) {
 
-$config['allowed_types'] = 'gif|jpg|png';
+    $config['allowed_types'] = 'gif|jpg|png';
 
-$config['max_size'] = '2048';
+    $config['max_size'] = '2048';
 
-$config['upload_path'] = './assets/images/profile';
+    $config['upload_path'] = './assets/images/profile';
 
-  
+    
 
-$this->load->library('upload', $config);
+    $this->load->library('upload', $config);
 
-  
+    
 
-// cek apakah gambar yang diupload berhasil?
+    // cek apakah gambar yang diupload berhasil?
 
-if ($this->upload->do_upload('image')) {
+    if ($this->upload->do_upload('image')) {
 
-// tumpuk file photo lama menjadi terbaru
+    // tumpuk file photo lama menjadi terbaru
 
-$old_photo = $data['users']['image'];
+    $old_photo = $data['users']['image'];
 
-if ($old_photo != 'default.jpg') {
+    if ($old_photo != 'default.jpg') {
 
-unlink(FCPATH . 'assets/images/profile' . $old_photo);
+    unlink(FCPATH . 'assets/images/profile' . $old_photo);
 
-}
+    }
 
-// ambil nama file terbaru, kemudian masukkan ke database
+    // ambil nama file terbaru, kemudian masukkan ke database
 
-$new_photo = $this->upload->data('file_name');
+    $new_photo = $this->upload->data('file_name');
 
-$this->db->set('image', $new_photo);
+    $this->db->set('image', $new_photo);
 
-}
+    }
 
-// jika gagal upload gambar
+    // jika gagal upload gambar
 
-else {
+    else {
 
-echo $this->upload->display_errors();
+    echo $this->upload->display_errors();
 
-}
+    }
 
-}
+    }
 
-  
+    
 
-$this->db->set('namadepan', $namadepan);
+    $this->db->set('namadepan', $namadepan);
 
-$this->db->where('email', $email);
+    $this->db->where('email', $email);
 
-$this->db->update('users');
+    $this->db->update('users');
 
-  
+    
 
-// membuat pesan berhasil melakukan update
+    // membuat pesan berhasil melakukan update
 
-$this->session->set_flashdata(
+    $this->session->set_flashdata(
 
-'message',
+    'message',
 
-'<div class="alert alert-success" role="alert">
+    '<div class="alert alert-success" role="alert">
 
-Akun Anda berhasil diupdate.
+    Akun Anda berhasil diupdate.
 
-</div>'
+    </div>'
 
-);
+    );
 
-// redirect ke auth login page setelah melakukan register
+    // redirect ke auth login page setelah melakukan register
 
-redirect('users/profile');
+    redirect('users/profile');
 
-}
+    }
 
-}
+    }
 
 
 
@@ -1082,358 +1090,358 @@ redirect('users/profile');
 #### 1. Class Superadmin
 **Digunakan untuk menampilkan halaman index Superadmin.**
 
-public function index()
+    public function index()
 
-{
+    {
 
-$queryAllAdmin = $this->M_Superadmin->getDataAdmin();
+    $queryAllAdmin = $this->M_Superadmin->getDataAdmin();
 
-  
+    
 
-// Jika bukan superadmin, tidak boleh masuk
+    // Jika bukan superadmin, tidak boleh masuk
 
-if ($this->session->userdata('role_id') != 3) {
+    if ($this->session->userdata('role_id') != 3) {
 
-echo 'Not Authorized';
+    echo 'Not Authorized';
 
-}
+    }
 
-else {
+    else {
 
-$DATA = array('queryAllAdmin' => $queryAllAdmin);
+    $DATA = array('queryAllAdmin' => $queryAllAdmin);
 
-  
+    
 
-$this->load->view('admin/superadmin.php', $DATA);
+    $this->load->view('admin/superadmin.php', $DATA);
 
-}
+    }
 
-  
+    
 
-}
+    }
 
   
 
 **Digunakan untuk menambah admin baru.**
 
-public function addAdminFunc()
+    public function addAdminFunc()
 
-{
+    {
 
-// $id = $this->input->post('id');
+    // $id = $this->input->post('id');
 
-$namadepan = $this->input->post('namadepan');
+    $namadepan = $this->input->post('namadepan');
 
-$namabelakang = $this->input->post('namabelakang');
+    $namabelakang = $this->input->post('namabelakang');
 
-$email = $this->input->post('email');
+    $email = $this->input->post('email');
 
-$image = $this->input->post('image');
+    $image = $this->input->post('image');
 
-$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-$nohp = $this->input->post('nohp');
+    $nohp = $this->input->post('nohp');
 
-$alamat = $this->input->post('alamat');
+    $alamat = $this->input->post('alamat');
 
-$role_id = 1;
+    $role_id = 1;
 
-$is_active = 1;
+    $is_active = 1;
 
-$created_at = time();
+    $created_at = time();
 
-  
+    
 
-$arrInsert = array(
+    $arrInsert = array(
 
-// 'id' => $id, auto increment
+    // 'id' => $id, auto increment
 
-'namadepan' => $namadepan,
+    'namadepan' => $namadepan,
 
-'namabelakang' => $namabelakang,
+    'namabelakang' => $namabelakang,
 
-'email' => $email,
+    'email' => $email,
 
-'image' => $image,
+    'image' => $image,
 
-'password' => $password,
+    'password' => $password,
 
-'nohp' => $nohp,
+    'nohp' => $nohp,
 
-'alamat' => $alamat,
+    'alamat' => $alamat,
 
-'role_id' => $role_id,
+    'role_id' => $role_id,
 
-'is_active' => $is_active,
+    'is_active' => $is_active,
 
-'created_at' => $created_at,
+    'created_at' => $created_at,
 
-);
+    );
 
-  
+    
 
-$this->M_Superadmin->insertDataAdmin($arrInsert);
+    $this->M_Superadmin->insertDataAdmin($arrInsert);
 
-redirect(base_url('admin/Superadmin'));
+    redirect(base_url('admin/Superadmin'));
 
-}
+    }
 
   
 
 **Digunakan untuk mengedit data admin**
 
-public function updateAdminFunc()
+    public function updateAdminFunc()
 
-{
+    {
 
-$id = $this->input->post('id');
+    $id = $this->input->post('id');
 
-$namadepan = $this->input->post('namadepan');
+    $namadepan = $this->input->post('namadepan');
 
-$namabelakang = $this->input->post('namabelakang');
+    $namabelakang = $this->input->post('namabelakang');
 
-$email = $this->input->post('email');
+    $email = $this->input->post('email');
 
-$image = $this->input->post('image');
+    $image = $this->input->post('image');
 
-$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 
-$nohp = $this->input->post('nohp');
+    $nohp = $this->input->post('nohp');
 
-$alamat = $this->input->post('alamat');
+    $alamat = $this->input->post('alamat');
 
-$role_id = 1;
+    $role_id = 1;
 
-$is_active = 1;
+    $is_active = 1;
 
-$created_at = time();
+    $created_at = time();
 
-$arrUpdate = array(
+    $arrUpdate = array(
 
-'namadepan' => $namadepan,
+    'namadepan' => $namadepan,
 
-'namabelakang' => $namabelakang,
+    'namabelakang' => $namabelakang,
 
-'email' => $email,
+    'email' => $email,
 
-'image' => $image,
+    'image' => $image,
 
-'password' => $password,
+    'password' => $password,
 
-'nohp' => $nohp,
+    'nohp' => $nohp,
 
-'alamat' => $alamat,
+    'alamat' => $alamat,
 
-'role_id' => $role_id,
+    'role_id' => $role_id,
 
-'is_active' => $is_active,
+    'is_active' => $is_active,
 
-'created_at' => $created_at
+    'created_at' => $created_at
 
-);
+    );
 
-  
+    
 
-$this->M_Superadmin->updateDataAdmin($id, $arrUpdate);
+    $this->M_Superadmin->updateDataAdmin($id, $arrUpdate);
 
-redirect(base_url('admin/Superadmin'));
+    redirect(base_url('admin/Superadmin'));
 
-}
+    }
 
   
 
 **Digunakan untuk menghapus data admin**
 
-public function deleteAdminFunc($id)
+    public function deleteAdminFunc($id)
 
-{
+    {
 
-$this->M_Superadmin->deleteDataAdmin($id);
+    $this->M_Superadmin->deleteDataAdmin($id);
 
-redirect(base_url('admin/Superadmin'));
+    redirect(base_url('admin/Superadmin'));
 
-}
+    }
 
 #### 2. Class Menus
 **Digunakan untuk menampilkan halaman index pengolahan menu**
 
-public function index()
+    public function index()
 
-{
+    {
 
-$queryAllMenus = $this->M_Menu->getAllMenu('');
+    $queryAllMenus = $this->M_Menu->getAllMenu('');
 
-  
+    
 
-$DATA = array('queryAllMenus' => $queryAllMenus);
+    $DATA = array('queryAllMenus' => $queryAllMenus);
 
-  
+    
 
-$this->load->view('admin/menus.php', $DATA);
+    $this->load->view('admin/menus.php', $DATA);
 
-}
+    }
 
   
 
 **Digunakan untuk menambah data menu**
 
-public function addMenusFunc()
+    public function addMenusFunc()
 
-{
+    {
 
-// $id = $this->input->post('id');
+    // $id = $this->input->post('id');
 
-$name = $this->input->post('name');
+    $name = $this->input->post('name');
 
-$type = $this->input->post('type');
+    $type = $this->input->post('type');
 
-$price = $this->input->post('price');
+    $price = $this->input->post('price');
 
-$image = $this->input->post('image');
+    $image = $this->input->post('image');
 
-$created_at = $this->input->post('created_at');
+    $created_at = $this->input->post('created_at');
 
-$updated_at = $this->input->post('created_at'); # sama dengan created_at karena pertama kali dibuat
+    $updated_at = $this->input->post('created_at'); # sama dengan created_at karena pertama kali dibuat
 
-  
+    
 
-$arrInsert = array(
+    $arrInsert = array(
 
-// 'id' => $id, auto increment
+    // 'id' => $id, auto increment
 
-'name' => $name,
+    'name' => $name,
 
-'type' => $type,
+    'type' => $type,
 
-'price' => $price,
+    'price' => $price,
 
-'image' => $image,
+    'image' => $image,
 
-'created_at' => $created_at,
+    'created_at' => $created_at,
 
-'updated_at' => $updated_at
+    'updated_at' => $updated_at
 
-);
+    );
 
-  
+    
 
-$this->M_Menu->insertDataMenus($arrInsert);
+    $this->M_Menu->insertDataMenus($arrInsert);
 
-redirect(base_url('admin/Menus'));
+    redirect(base_url('admin/Menus'));
 
-}
+    }
 
   
 
 **Digunakan untuk mengedit data menu**
 
-public function updateMenusFunc()
+    public function updateMenusFunc()
 
-{
+    {
 
-$id = $this->input->post('id');
+    $id = $this->input->post('id');
 
-$name = $this->input->post('name');
+    $name = $this->input->post('name');
 
-$type = $this->input->post('type');
+    $type = $this->input->post('type');
 
-$price = $this->input->post('price');
+    $price = $this->input->post('price');
 
-$image = $this->input->post('image');
+    $image = $this->input->post('image');
 
-$created_at = $this->input->post('created_at');
+    $created_at = $this->input->post('created_at');
 
-$updated_at = $this->input->post('updated_at');
+    $updated_at = $this->input->post('updated_at');
 
-  
+    
 
-$arrUpdate = array(
+    $arrUpdate = array(
 
-'name' => $name,
+    'name' => $name,
 
-'type' => $type,
+    'type' => $type,
 
-'price' => $price,
+    'price' => $price,
 
-'image' => $image,
+    'image' => $image,
 
-// 'created_at' => $created_at, Tidak diupdate
+    // 'created_at' => $created_at, Tidak diupdate
 
-'updated_at' => $updated_at
+    'updated_at' => $updated_at
 
-);
+    );
 
-  
+    
 
-$this->M_Menu->updateDataMenus($id, $arrUpdate);
+    $this->M_Menu->updateDataMenus($id, $arrUpdate);
 
-redirect(base_url('admin/Menus'));
+    redirect(base_url('admin/Menus'));
 
-}
+    }
 
   
 
 **Digunakan untuk menghapus data menu**
 
-public function deleteMenusFunc($id)
+    public function deleteMenusFunc($id)
 
-{
+    {
 
-$this->M_Menu->deleteDataMenus($id);
+    $this->M_Menu->deleteDataMenus($id);
 
-redirect(base_url('admin/Menus'));
+    redirect(base_url('admin/Menus'));
 
-}
+    }
 
 #### 3. Class Order
 **Digunakan untuk menampilkan halaman index Orders**
 
-public function index()
+    public function index()
 
-{
+    {
 
-$queryAllOrders = $this->M_Order->getAllOrder();
+    $queryAllOrders = $this->M_Order->getAllOrder();
 
-$queryOrderDetail = $this->M_Order_Detail->getAllOrderDetail();
+    $queryOrderDetail = $this->M_Order_Detail->getAllOrderDetail();
 
-  
+    
 
-$DATA = array(
+    $DATA = array(
 
-'queryAllOrders' => $queryAllOrders,
+    'queryAllOrders' => $queryAllOrders,
 
-'queryOrderDetail' => $queryOrderDetail
+    'queryOrderDetail' => $queryOrderDetail
 
-);
+    );
 
-  
+    
 
-$this->load->view('admin/orders.php', $DATA);
+    $this->load->view('admin/orders.php', $DATA);
 
-}
+    }
 
   
 
 **Digunakan untuk mengupdate status pesanan**
 
-public function updateOrdersFunc()
+    public function updateOrdersFunc()
 
-{
+    {
 
-$id = $this->input->post('id');
+    $id = $this->input->post('id');
 
-$status = $this->input->post('status');
+    $status = $this->input->post('status');
 
-$arrUpdate = array(
+    $arrUpdate = array(
 
-'status' => $status
+    'status' => $status
 
-);
+    );
 
-  
+    
 
-$this->M_Order->updateDataOrders($id, $arrUpdate);
+    $this->M_Order->updateDataOrders($id, $arrUpdate);
 
-redirect(base_url('admin/Orders'));
+    redirect(base_url('admin/Orders'));
 
-}
+    }
