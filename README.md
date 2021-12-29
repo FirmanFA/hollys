@@ -26,7 +26,7 @@ Website Pemesan Makanan ini dibuat dengan tujuan untuk memudahkan pembeli atau p
 - Admin dapat mengupdate status pesanan pada menu update order status.
 
 ## Teknologi Yang Digunakan
-Website ini dibuat menggunakan html, css, bootstrap, php, dan framework codeigniter.
+Website ini dibuat menggunakan html, css, javascript, bootstrap, php, dan framework codeigniter.
 Html, css, dan bootsrap digunakan untuk melakukan desain website pemesanan makanan Holly's .
 
 ## Cara Penggunaan Aplikasi
