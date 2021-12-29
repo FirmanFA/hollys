@@ -12,13 +12,18 @@ Website Pemesan Makanan ini dibuat dengan tujuan untuk memudahkan pembeli atau p
 
 ## Sitemap
 **![](https://lh3.googleusercontent.com/mn-A9X1VrZIS8BUJZpcn6T4wCrnO2_VfNQAhRZhxgLTUjx_4p2EUQx0uQtFu6Zc5Jmfqo30gAgcyjz7sQbWjwc6EJhdeQnmKC-yQ1SJfe9KAqKZCJnD-6SNMaCs47V3GCAEv60cI)**
+
+### Penjelasan sitemap User
+- User dapat melihat menu yang terkategori atas makanan, minuman, dan camilan.
+- User dapat melihat profil dan mengedit profil.
+- User dapat menambahkan item pesanan ke keranjang pesanan dan melakukan checkout.
+
 ### Penjelasan Sitemap Admin
 - Admin dapat melihat daftar menu yang sudah ditambahkan pada menu overview.
 - Admin dapat menambah menu pada add menu.
 - Admin dapat mengedit menu yang telah ditambahkan pada edit menu.
 - Admin dapat melihat daftar pesanan yang diterima pada menu orders overview.
-- Admin dapat mengupdat status pesanan pada menu update order status.
-- 
+- Admin dapat mengupdate status pesanan pada menu update order status.
 
 ## Teknologi Yang Digunakan
 Website ini dibuat menggunakan html, css, bootstrap, php, dan framework codeigniter.
