@@ -13,7 +13,7 @@ Website Pemesan Makanan ini dibuat dengan tujuan untuk memudahkan pembeli atau p
 ## Sitemap
 **![](https://lh3.googleusercontent.com/mn-A9X1VrZIS8BUJZpcn6T4wCrnO2_VfNQAhRZhxgLTUjx_4p2EUQx0uQtFu6Zc5Jmfqo30gAgcyjz7sQbWjwc6EJhdeQnmKC-yQ1SJfe9KAqKZCJnD-6SNMaCs47V3GCAEv60cI)**
 
-### Penjelasan sitemap User
+### Penjelasan Sitemap User
 - User dapat melihat menu yang terkategori atas makanan, minuman, dan camilan.
 - User dapat melihat profil dan mengedit profil.
 - User dapat menambahkan item pesanan ke keranjang pesanan dan melakukan checkout.
