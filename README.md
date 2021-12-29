@@ -1383,3 +1383,56 @@ $this->M_Menu->deleteDataMenus($id);
 redirect(base_url('admin/Menus'));
 
 }
+
+#### 3. Class Order
+**Digunakan untuk menampilkan halaman index Orders**
+
+public function index()
+
+{
+
+$queryAllOrders = $this->M_Order->getAllOrder();
+
+$queryOrderDetail = $this->M_Order_Detail->getAllOrderDetail();
+
+  
+
+$DATA = array(
+
+'queryAllOrders' => $queryAllOrders,
+
+'queryOrderDetail' => $queryOrderDetail
+
+);
+
+  
+
+$this->load->view('admin/orders.php', $DATA);
+
+}
+
+  
+
+**Digunakan untuk mengupdate status pesanan**
+
+public function updateOrdersFunc()
+
+{
+
+$id = $this->input->post('id');
+
+$status = $this->input->post('status');
+
+$arrUpdate = array(
+
+'status' => $status
+
+);
+
+  
+
+$this->M_Order->updateDataOrders($id, $arrUpdate);
+
+redirect(base_url('admin/Orders'));
+
+}
