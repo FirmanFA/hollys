@@ -41,39 +41,42 @@ class Users extends CI_Controller
         }
         else {
             $namadepan = $this->input->post('namadepan');
+            $namabelakang = $this->input->post('namabelakang');
             $email = $this->input->post('email');
+            $nohp = $this->input->post('nohp');
+            $alamat = $this->input->post('alamat');
 
-            // cek jika user mengupload foto profil baru 
-            $upload_photo = $_FILES['image'];
 
+            $new_photo = "default.jpg";
             // cek jika yang dikirim user adalah benar-benar file foto
-            if ($upload_photo) {
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']     = '2048';
-                $config['upload_path'] = './assets/images/profile';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']     = '2048';
+            $config['upload_path'] = './assets/images/profile';
 
-                $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-                // cek apakah gambar yang diupload berhasil?
-                if ($this->upload->do_upload('image')) {
-                    // tumpuk file photo lama menjadi terbaru
-                    $old_photo = $data['users']['image'];
-                    if ($old_photo != 'default.jpg') {
-                        unlink(FCPATH . 'assets/images/profile' . $old_photo);
-                    }
-                    // ambil nama file terbaru, kemudian masukkan ke database
-                    $new_photo = $this->upload->data('file_name');
-                    $this->db->set('image', $new_photo);
-                }
-                // jika gagal upload gambar
-                else {
-                    echo $this->upload->display_errors();
-                }
+            // cek apakah gambar yang diupload berhasil?
+            if ($this->upload->do_upload('image')) {
+                
+                // ambil nama file terbaru, kemudian masukkan ke database
+                $new_photo = $this->upload->data('file_name');
             }
+            // jika gagal upload gambar
+            else {
+                echo $this->upload->display_errors();
+            }
+            
+            $arrUpdate = array(
+                'namadepan' => $namadepan,
+                'namabelakang' => $namabelakang,
+                'email' => $email,
+                'image' => $new_photo,
+                'nohp' => $nohp,
+                'alamat' => $alamat
+            );
 
-            $this->db->set('namadepan', $namadepan);
             $this->db->where('email', $email);
-            $this->db->update('users');
+            $this->db->update('users', $arrUpdate);
 
             // membuat pesan berhasil melakukan update
 			$this->session->set_flashdata(

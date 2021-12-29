@@ -33,7 +33,7 @@
                 <div class="modal-body">Selecting "Logout" will end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="login.html">Logout</a>
+                    <a class="btn btn-danger" href="<?php echo base_url().'auth/logout' ?>">Logout</a>
                 </div>
             </div>
         </div>

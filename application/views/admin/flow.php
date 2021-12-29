@@ -26,4 +26,13 @@
                 <?php }?>
             <?php } ?>
 
+			<td><a href="<?php echo base_url('admin/menus/updateMenus'); ?>/<?php echo $row->id ?>">Edit</a></td>
+					<td><a href="<?php echo base_url('admin/menus/deleteMenusFunc'); ?>/<?php echo $row->id ?>">Hapus</a></td>
+
 			status	: <?php echo $row1->status ?> --- <a href="<?php echo base_url('admin/Orders/updateOrderStatus'); ?>/<?php echo $row1->id; ?>">Update</a><br>
+
+			<li><a href="<?php echo base_url('admin/Superadmin'); ?>">Admin</a></li>
+		<li><a href="<?php echo base_url('admin/Superadmin/addAdmin'); ?>">Tambah Data Admin</a></li>
+
+		<td><a href="<?php echo base_url('admin/Superadmin/updateAdmin'); ?>/<?php echo $row->id ?>">Edit</a></td>
+					<td><a href="<?php echo base_url('admin/Superadmin/deleteAdminFunc'); ?>/<?php echo $row->id ?>">Hapus</a></td>

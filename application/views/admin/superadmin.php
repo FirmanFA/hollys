@@ -1,54 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/style.css') ?>">
-	<title>Admin Admin</title>
-</head>
-<body>
-	<!-- keluar/logout -->
-	<div>
-		<a class="logout-button" aria-current="page" href="<?php echo base_url().'auth/logout' ?>"><i class="">logout</i></a>
-	</div>
-	<br><br><br>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-	<ul class="topnav">
-		<li><a href="<?php echo base_url('admin/Superadmin') ?>">Manage admin</a></li>
-		<li><a href="<?php echo base_url('admin/Menus') ?>">Manage Menus</a></li>
-		<li><a href="<?php echo base_url('admin/Orders') ?>">Manage Orders</a></li>
-	</ul>
-	<ul class="sidenav">
-		<li><a href="<?php echo base_url('admin/Superadmin'); ?>">Admin</a></li>
-		<li><a href="<?php echo base_url('admin/Superadmin/addAdmin'); ?>">Tambah Data Admin</a></li>
-	</ul>
-	<br><br>
-	
-	<h1>Admin</h1>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+    <a href="<?php echo base_url('admin/Superadmin/addAdmin'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
+</div>
 
-	<?php foreach($queryAllAdmin as $row){ ?>
-		<div class="menu-item">
-			ID		: <?php echo $row->id ?> <br>
-			Name 	: <?php echo "$row->namadepan $row->namabelakang"  ?> <br>
-			email	: <?php echo $row->email ?> <br>
-			Image	: <?php echo $row->image ?> <br>
-			password	: <?php echo $row->password ?> <br>
-			nohp	: <?php echo $row->nohp ?> <br>
-			alamat	: <?php echo $row->alamat ?> <br>
-			role_id	: <?php echo $row->role_id ?> <br>
-			is_active	: <?php echo $row->is_active ?> <br>
-			Created at	: <?php echo $row->created_at ?> <br>
-			<br>
-			<table>
-				<tr>
-					<td><a href="<?php echo base_url('admin/Superadmin/updateAdmin'); ?>/<?php echo $row->id ?>">Edit</a></td>
-					<td><a href="<?php echo base_url('admin/Superadmin/deleteAdminFunc'); ?>/<?php echo $row->id ?>">Hapus</a></td>
-				</tr>
-			</table>
-		</div>
-	<br>
-	<?php } ?>
-	<br><br>
-</body>
-</html>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Image</th>
+                        <th>No Hp</th>
+                        <th>Alamat</th>
+                        <th>Is Active</th>
+                        <th>Role Id</th>
+						<th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php foreach($queryAllAdmin as $row){ ?>
+                        <tr>
+                            <td><?php echo $row->id ?> </td>
+                            <td><?php echo "$row->namadepan $row->namabelakang"  ?> </td>
+                            <td><?php echo $row->email ?> </td>
+                            <td><img class="img-fluid"
+                                    src="<?php echo base_url('assets/images/profile/') . $row->image; ?>"
+                                    width="150" height="150"></td>
+                            <td><?php echo $row->nohp ?> </td>
+                            <td><?php echo $row->alamat ?> </td>
+                            <td><?php echo $row->is_active ?> </td>
+                            <td><?php echo $row->role_id ?> </td>
+                            <td><a href="<?php echo base_url('admin/Superadmin/updateAdmin'); ?>/<?php echo $row->id ?>" 
+                                    class="btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i></a>
+                                <a href="<?php echo base_url('admin/Superadmin/deleteAdminFunc'); ?>/<?php echo $row->id ?>" 
+                                    class="btn btn-sm btn-danger shadow-sm">
+                                    <i class="fas fa-trash fa-sm text-white-50"></i></a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /.container-fluid -->

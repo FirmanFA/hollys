@@ -21,11 +21,26 @@ class Superadmin extends CI_Controller{
 		// Jika bukan superadmin, tidak boleh masuk
 		if ($this->session->userdata('role_id') != 3) {
 			echo 'Not Authorized';
+			redirect(base_url('admin'));
+
 		}
 		else {
 			$DATA = array('queryAllAdmin' => $queryAllAdmin);
 
+			$userData = $this->db->get_where('users', 
+                                            [ 'email' => $this->session->userdata('email') ] 
+                        ) -> row_array();
+			$dataUser = array(
+				'username' => $userData['namadepan'].' '.$userData['namabelakang'],
+				'image' => $userData['image']
+			);
+
+			
+			$this->load->view('admin/templates/header', $dataUser);
 			$this->load->view('admin/superadmin.php', $DATA);
+			$this->load->view('admin/templates/footer');
+
+			
 		}
 
         
@@ -33,7 +48,19 @@ class Superadmin extends CI_Controller{
 
     public function addAdmin()
 	{
+		$userData = $this->db->get_where('users', 
+										[ 'email' => $this->session->userdata('email') ] 
+					) -> row_array();
+		$dataUser = array(
+			'username' => $userData['namadepan'].' '.$userData['namabelakang'],
+			'image' => $userData['image']
+		);
+
+		
+		$this->load->view('admin/templates/header', $dataUser);
 		$this->load->view('admin/addAdmin.php');
+		$this->load->view('admin/templates/footer');
+		
 	}
 
 	public function addAdminFunc()
@@ -80,7 +107,20 @@ class Superadmin extends CI_Controller{
 		// echo '</pre>';
 
 		$DATA = array('queryDetailAdmin' => $queryDetailAdmin);
+		
+
+		$userData = $this->db->get_where('users', 
+										[ 'email' => $this->session->userdata('email') ] 
+					) -> row_array();
+		$dataUser = array(
+			'username' => $userData['namadepan'].' '.$userData['namabelakang'],
+			'image' => $userData['image']
+		);
+
+		
+		$this->load->view('admin/templates/header', $dataUser);
 		$this->load->view('admin/updateAdmin.php', $DATA);
+		$this->load->view('admin/templates/footer');
 	}
 
 	

@@ -3,7 +3,7 @@
     <div class="col-lg-8">
       <h4 class="alert alert-warning">Update Profil Saya</h4>
 
-      <?php echo form_open_multipart('users/update');?>
+      <?php echo form_open_multipart('admin/admin/updateProfile');?>
 
       <!-- edit nama depan -->
       <div class="form-group row mt-5 mb-2">

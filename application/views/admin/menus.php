@@ -4,7 +4,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Data Menu</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+    <a href="<?php echo base_url('admin/menus/addMenus'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
             class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
 </div>
 
@@ -31,8 +31,18 @@
                             <td><?php echo $row->name ?> <br></td>
                             <td><?php echo $row->type ?> <br></td>
                             <td><?php echo $row->price ?> <br></td>
-                            <td><?php echo $row->image ?> <br></td>
-                            <td>Action</td>
+                            <td>
+                                <img class="img-fluid"
+                                    src="<?php echo base_url('assets/images/menu/') . $row->image; ?>"
+                                    width="150" height="150">
+                            </td>
+                            <td><a href="<?php echo base_url('admin/menus/updateMenus'); ?>/<?php echo $row->id ?>" 
+                                    class="btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i></a>
+                                <a href="<?php echo base_url('admin/menus/deleteMenusFunc'); ?>/<?php echo $row->id ?>" 
+                                    class="btn btn-sm btn-danger shadow-sm">
+                                    <i class="fas fa-trash fa-sm text-white-50"></i></a>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
