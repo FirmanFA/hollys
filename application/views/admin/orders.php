@@ -28,16 +28,12 @@
                             <td><?php echo $row->id ?> <br></td>
                             <td><?php echo $row->namadepan.' '.$row->namabelakang ?> <br></td>
                             <td><?php echo $row->sub_total ?> <br></td>
-                            <td><?php echo $row->status ?> <br></td>
                             <td><?php echo $row->created_at ?> <br></td>
-                            <td>View Detail Order</td>
-							<td><select name="status" id="status">
-								<option value="paid">Unpaid</option>
-								<option value="paid">Paid</option>
-								<option value="paid">Process</option>
-								<option value="paid">On The Way</option>
-								<option value="paid">Sent</option>
-							</select></td>
+                            <td><?php echo $row->status ?> <br></td>
+                            <td> <a href="<?php echo base_url('admin/orders/detailOrder'); ?>/<?php echo $row->id; ?>">View Detail Order</a></td>
+							<td><a href="<?php echo base_url('admin/Orders/updateOrderStatus'); ?>/<?php echo $row->id; ?>" 
+                                    class="btn btn-sm btn-primary shadow-sm">
+                                    <i class="fas fa-edit fa-sm text-white-50"></i></a></td>
                         </tr>
                     <?php } ?>
                 </tbody>

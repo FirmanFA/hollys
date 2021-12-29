@@ -43,21 +43,48 @@ class Orders extends CI_Controller{
     }
 
 	public function detailOrder($orderId){
-		$queryOrderDetail = $this->M_Order_Detail->getOrderDetailByOrderId($orderId);
+		$queryOrderDetail = $this->M_Order->getOrderDetails($orderId);
         
         $DATA = array(
 			'queryOrderDetail' => $queryOrderDetail
 		);
 
-        $this->load->view('admin/orderDetail.php', $DATA);
+		$userData = $this->db->get_where('users', 
+                                            [ 'email' => $this->session->userdata('email') ] 
+                        ) -> row_array();
+		$dataUser = array(
+			'username' => $userData['namadepan'].' '.$userData['namabelakang'],
+			'image' => $userData['image']
+		);
+
+		
+		$this->load->view('admin/templates/header', $dataUser);
+		$this->load->view('admin/orderDetail', $DATA);
+		$this->load->view('admin/templates/footer');
+        
 	}
 
 	public function updateOrderStatus($id)
 	{
 		$queryDetailOrders = $this->M_Order->getOrderWhereId($id);
 
+		$userData = $this->db->get_where('users', 
+                                            [ 'email' => $this->session->userdata('email') ] 
+                        ) -> row_array();
+		$dataUser = array(
+			'username' => $userData['namadepan'].' '.$userData['namabelakang'],
+			'image' => $userData['image']
+		);
+
 		$DATA = array('queryDetailOrders' => $queryDetailOrders);
-		$this->load->view('admin/updateOrderStatus.php', $DATA);
+		
+
+		
+		$this->load->view('admin/templates/header', $dataUser);
+		$this->load->view('admin/updateOrderStatus', $DATA);
+		$this->load->view('admin/templates/footer');
+
+		
 	}
 
 	

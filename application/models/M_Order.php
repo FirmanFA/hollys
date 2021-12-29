@@ -14,8 +14,11 @@ class M_Order extends CI_Model
 
 	function getOrderDetails($id)
 	{
-		$where = array('order_id' => $id);
-		$query = $this->db->select('*')->from('order_details')->where($where)->get();
+		// $where = array('order_id' => $id);
+		// $query = $this->db->select('*')->from('order_details')->where($where)->get();
+
+		$sql = 'SELECT order_details.*, menus.name, menus.image FROM order_details INNER JOIN menus ON order_details.menu_id = menus.id WHERE order_details.order_id = ?';
+		$query = $this->db->query($sql, array($id));
 
 		return $query->result();
 	}
