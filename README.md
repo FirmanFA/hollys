@@ -26,7 +26,7 @@ Website Pemesan Makanan ini dibuat dengan tujuan untuk memudahkan pembeli atau p
 - Admin dapat mengupdate status pesanan pada menu update order status.
 
 ## Teknologi Yang Digunakan
-Teknologi yang digunakan dalam pembuatan website pemesanan makanan Holly’s di antaranya seperti html, css, javaScript, bootstrap, php, dan framework codeigniter3.
+Teknologi yang digunakan dalam pembuatan website pemesanan makanan Holly’s di antaranya seperti html, css, javascript, bootstrap, php, dan framework codeigniter3.
 Html, css, javaScript dan bootstrap digunakan untuk melakukan desain website pemesanan makanan Holly's. Untuk bahasa pemrograman yang digunakan adalah bahasa pemrograman PHP. Dan dalam pengerjaan source code dilakukan sesuai dengan kerangka kerja codeigniter3.
 
 
@@ -34,14 +34,7 @@ Html, css, javaScript dan bootstrap digunakan untuk melakukan desain website pem
 ### Menggunakan Website dari Sisi Client
 1.  Pengguna dapat berkunjung ke halaman localhost/hollysss untuk melakukan register (jika belum memiliki akun) atau login (jika sudah memiliki akun).
     
-2.  Untuk register, pengguna perlu memasukkan data diri yang diminta sebagai berikut :
-- Nama Depan
-- Nama Belakang
-- Email
-- Kata Sandi
-- Mengetik Ulang Kata Sandi
-- Nomor HP
-- Alamat
+2.  Untuk register, pengguna perlu memasukkan data diri yang diminta sebagai berikut, Nama Depan, Nama Belakang, Email, Kata Sandi, Mengetik Ulang Kata Sandi, Nomor HP, dan Alamat
 
 3.  Setelah melakukan register, akan muncul pemberitahuan bahwa akun pengguna telah berhasil dibuat dan mengarah langsung pada halaman login.
     
