@@ -47,6 +47,7 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <?php echo $pagination; ?>
         </div>
     </div>
 </div>

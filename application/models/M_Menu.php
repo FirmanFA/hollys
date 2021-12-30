@@ -35,13 +35,20 @@ class M_Menu extends CI_Model
 		return $query->result();
 	}
 
-	function getAllMenu($search)
+	function getAllMenu($search,$limit,$offset)
 	{
-		$sql = "SELECT * FROM menus WHERE name LIKE '%$search%'";
+		$sql = "SELECT * FROM menus WHERE name LIKE '%$search%' LIMIT $offset, $limit";
 
 		$query = $this->db->query($sql);
 
 		return $query->result();
+	}
+
+	function getMenuCount(){
+		$query = $this->db->count_all('menus');
+
+		return $query;
+
 	}
 
 	// Di bawah ini fungsi admin
